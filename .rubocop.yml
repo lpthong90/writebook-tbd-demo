@@ -8,7 +8,7 @@ AllCops:
 
 # Allow longer blocks in test files
 Metrics/BlockLength:
-  Max: 60
+  # Max: 25
   Exclude:
     - 'test/**/*'
 
