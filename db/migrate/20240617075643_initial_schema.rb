@@ -1,4 +1,5 @@
 class InitialSchema < ActiveRecord::Migration[8.0]
+  # rubocop:disable Metrics/AbcSize
   def change
     create_table "accesses", force: :cascade do |t|
       t.integer "user_id", null: false
@@ -36,7 +37,8 @@ class InitialSchema < ActiveRecord::Migration[8.0]
       t.datetime "created_at", null: false
       t.string "slug"
       t.index [ "blob_id" ], name: "index_active_storage_attachments_on_blob_id"
-      t.index [ "record_type", "record_id", "name", "blob_id" ], name: "index_active_storage_attachments_uniqueness", unique: true
+      t.index [ "record_type", "record_id", "name", "blob_id" ], name: "index_active_storage_attachments_uniqueness",
+unique: true
       t.index [ "slug" ], name: "index_active_storage_attachments_on_slug", unique: true
     end
 

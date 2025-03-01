@@ -35,7 +35,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "creating a new user with an existing email address redirects to login screen" do
     assert_no_difference -> { User.count } do
-      post join_url(@join_code), params: { user: { name: "Another David", email_address: users(:david).email_address, password: "secret123456" } }
+      post join_url(@join_code), params: {
+        user: {
+          name: "Another David",
+          email_address: users(:david).email_address,
+          password: "secret123456"
+        }
+      }
     end
 
     assert_redirected_to new_session_url(email_address: users(:david).email_address)

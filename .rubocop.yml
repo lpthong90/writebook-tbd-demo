@@ -1,8 +1,44 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# Project-specific configurations
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+
+# Allow longer blocks in test files
+Metrics/BlockLength:
+  Max: 60
+  Exclude:
+    - 'test/**/*'
+
+# Allow longer lines in complex view files
+Layout/LineLength:
+  Max: 250
+  Exclude:
+    - 'app/views/**/*'
+
+# Prefer double quotes for string literals
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Configure documentation requirements
+Style/Documentation:
+  Enabled: false
+
+# Allow multiple empty lines in complex view templates
+Layout/EmptyLines:
+  Exclude:
+    - 'app/views/**/*'
+
+# Relax ABC size for complex controller actions
+Metrics/AbcSize:
+  Max: 100
+  Exclude:
+    - 'app/controllers/**/*'
+
+# Increase method length limit for complex operations
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - 'db/migrate/*'

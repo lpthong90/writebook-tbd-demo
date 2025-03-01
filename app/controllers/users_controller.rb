@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_action :ensure_can_administer, only: %i[ update destroy ]
   before_action :set_user, only: %i[ update destroy ]
 
-
   def index
     @users = User.active
   end
